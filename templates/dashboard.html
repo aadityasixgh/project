@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- SIDEBAR -->
+
+    <div class="sidebar">
+
+        <img src="{{ url_for('static',
+        filename='logo.png') }}"
+        class="sidebar-logo">
+
+        <a href="#">Dashboard</a>
+        <a href="#">Upload Excel</a>
+        <a href="#">Reports</a>
+
+        <a href="/logout">
+            Logout
+        </a>
+
+    </div>
+
+
+    <!-- MAIN -->
+
+    <div class="main-content">
+
+        <div class="topbar">
+
+            <h1>
+                VIRAJ ENTERPRISE PORTAL
+            </h1>
+
+        </div>
+
+
+        <!-- SEARCH -->
+
+        <div class="search-card">
+
+            <form method="POST"
+                  enctype="multipart/form-data">
+
+                <input type="file"
+                       name="excel"
+                       required>
+
+                <input type="text"
+                       name="keyword"
+                       placeholder="Search any word..."
+                       required>
+
+                <button type="submit">
+                    Search
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <!-- STATS -->
+
+        <div class="stats">
+
+            <div class="card">
+                <h2>{{ total_rows }}</h2>
+                <p>Total Rows</p>
+            </div>
+
+            <div class="card">
+                <h2>{{ total_columns }}</h2>
+                <p>Total Columns</p>
+            </div>
+
+            <div class="card">
+                <h2>{{ total_matches }}</h2>
+                <p>Total Matches</p>
+            </div>
+
+        </div>
+
+
+        <!-- EXCEL TABLE -->
+
+        <div class="table-box">
+
+            {{ tables|safe }}
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
